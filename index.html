@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TouchLife Spa — Web Design Proposal · Web Vanguard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0A0A0A;--bg2:#111111;--acc:#C9A96E;--acc2:#E8D5A3;--text:#F5F0E8;--muted:rgba(245,240,232,.5);--border:rgba(201,169,110,.15)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;letter-spacing:.04em}.logo span{color:var(--acc)}
+.lang-toggle{display:flex;gap:.5rem}
+.lang-btn{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;padding:.3rem .7rem;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.lang-btn.active{border-color:var(--acc);color:var(--acc)}
+.hero{max-width:900px;margin:0 auto;padding:5rem 2rem 4rem}
+.hero-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.3em;color:var(--acc);display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.hero-label::before{content:'';width:2rem;height:1px;background:var(--acc)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,9vw,6rem);font-weight:900;font-style:italic;line-height:1.02;margin-bottom:1.25rem}
+.hero-tagline{font-size:1rem;color:var(--muted);max-width:480px;margin-bottom:2.5rem;line-height:1.75}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2rem}
+.pill{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;padding:.45rem 1.1rem;border:1px solid var(--acc);color:var(--acc)}
+.pill.filled{background:var(--acc);color:var(--bg)}
+.demo-link{font-size:.8rem;letter-spacing:.1em;color:var(--acc);display:inline-flex;align-items:center;gap:.4rem;transition:opacity .2s}
+.demo-link:hover{opacity:.75}
+.opportunity{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem;text-align:center}
+.opportunity-inner{max-width:700px;margin:0 auto}
+.opp-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:1rem}
+.opp-text{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:1.25rem}
+.opp-bold{font-size:1rem;font-weight:600;color:var(--text)}
+.sections{max-width:900px;margin:0 auto;padding:3rem 2rem}
+.sections h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:2.5rem}
+.section-item{display:grid;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--border)}
+.section-item:last-child{border-bottom:none}
+.sec-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--acc);opacity:.3;line-height:1;padding-top:.2rem}
+.sec-title{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+.sec-desc{font-size:.85rem;color:var(--muted);line-height:1.75}
+.features{background:var(--bg2);padding:3rem 2rem;border-top:1px solid var(--border)}
+.features-inner{max-width:900px;margin:0 auto}
+.features h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:2rem}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem}
+.feat{padding:1.25rem;border:1px solid var(--border);background:var(--bg)}
+.feat-icon{font-size:1.3rem;margin-bottom:.5rem}
+.feat-title{font-size:.8rem;font-weight:600;margin-bottom:.2rem}
+.feat-desc{font-size:.75rem;color:var(--muted);line-height:1.5}
+.pricing{max-width:900px;margin:0 auto;padding:3rem 2rem}
+.pricing h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.4rem}
+.pricing-sub{font-size:.85rem;color:var(--muted);margin-bottom:2rem}
+table{width:100%;border-collapse:collapse}
+th{font-size:.6rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+td{padding:.9rem 1rem;border-bottom:1px solid var(--border);font-size:.85rem;vertical-align:top}
+tr.rec td{background:rgba(201,169,110,.06)}
+.plan-name{font-weight:700}
+.plan-price{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--acc2);white-space:nowrap}
+.badge{display:inline-block;font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;background:var(--acc);color:var(--bg);padding:.18rem .5rem;margin-left:.4rem;vertical-align:middle}
+.plan-desc{color:var(--muted)}
+.cta{padding:4rem 2rem 5rem;text-align:center}
+.cta-inner{max-width:600px;margin:0 auto}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;margin-bottom:.75rem}
+.cta p{font-size:.9rem;color:var(--muted);margin-bottom:2.5rem;line-height:1.75}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.85rem 1.75rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;transition:opacity .2s}
+.btn-wa:hover{opacity:.88}
+.btn-demo{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border);color:var(--text);padding:.85rem 1.75rem;font-size:.8rem;letter-spacing:.05em;transition:border-color .2s}
+.btn-demo:hover{border-color:var(--acc)}
+footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:.7rem;color:var(--muted);letter-spacing:.1em}
+@media(max-width:600px){
+  nav{padding:1rem 1.25rem}
+  .hero,.sections,.pricing,.cta{padding-left:1.25rem;padding-right:1.25rem}
+  .section-item{grid-template-columns:2.5rem 1fr;gap:1rem}
+  table td:last-child{display:none}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Web<span>Vanguard</span></div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('ar')" id="btn-ar">AR</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Exclusive Web Design Proposal · Dubai Marina · March 2026</div>
+  <h1>TouchLife<br>Spa</h1>
+  <p class="hero-tagline">Every night, someone searches for a spa in Dubai Marina. Right now, they can't find you.</p>
+  <div class="hero-pills">
+    <span class="pill filled">Growth Plan</span>
+    <span class="pill">AED 4,500</span>
+    <span class="pill">Luxury Spa & Wellness</span>
+  </div>
+  <a href="https://lumiere-wellness.vercel.app" target="_blank" class="demo-link">View Your Website Demo →</a>
+</div>
+
+<div class="opportunity">
+  <div class="opportunity-inner">
+    <h2 class="opp-title">Right now, you don't exist online.</h2>
+    <p class="opp-text">Every night, people in Dubai Marina search for a spa. They type "spa Dubai Marina" into Google. They're ready to book, ready to spend. But without a website, your name never appears. They book somewhere else — not because your spa is worse, but because they simply can't find you.</p>
+    <p class="opp-bold">We built your website. It's ready. All it needs is your name on it.</p>
+  </div>
+</div>
+
+<div class="sections">
+  <h2>What we built for you</h2>
+  <div class="section-item"><div class="sec-num">01</div><div><div class="sec-title">A Presence That Matches Your Space</div><p class="sec-desc">A stunning digital entrance that communicates the luxury of TouchLife before a single word is read. Visitors feel the quality of your spa the moment they land — and that first impression drives bookings.</p></div></div>
+  <div class="section-item"><div class="sec-num">02</div><div><div class="sec-title">Your Treatments, Beautifully Showcased</div><p class="sec-desc">Every service presented with elegant descriptions and prices in AED. Clear, refined, and designed so the decision to book feels effortless — not like filling in a form.</p></div></div>
+  <div class="section-item"><div class="sec-num">03</div><div><div class="sec-title">Found When It Matters Most</div><p class="sec-desc">Built to rank when someone searches "spa Dubai Marina" at 11pm on their phone. Local SEO so your business appears at the top — day and night, not just during business hours.</p></div></div>
+  <div class="section-item"><div class="sec-num">04</div><div><div class="sec-title">The Atmosphere, Online</div><p class="sec-desc">A visual gallery that transports visitors before they arrive. Seeing the space, the treatments, the calm — that's what turns a late-night search into a confirmed morning appointment.</p></div></div>
+  <div class="section-item"><div class="sec-num">05</div><div><div class="sec-title">Book Instantly, Any Time</div><p class="sec-desc">A WhatsApp button for instant enquiries. A booking form that sends new reservations straight to you. Your exact location in Dubai Marina so clients find you without friction.</p></div></div>
+</div>
+
+<div class="features">
+  <div class="features-inner">
+    <h2>Everything included</h2>
+    <div class="features-grid">
+      <div class="feat"><div class="feat-icon">📱</div><div class="feat-title">Works on every device</div><p class="feat-desc">Phone, tablet, desktop — your website looks perfect everywhere.</p></div>
+      <div class="feat"><div class="feat-icon">🔍</div><div class="feat-title">Found on Google</div><p class="feat-desc">When someone searches "spa Dubai Marina", your business appears.</p></div>
+      <div class="feat"><div class="feat-icon">💬</div><div class="feat-title">WhatsApp button</div><p class="feat-desc">Clients reach you in one tap — no searching for a number.</p></div>
+      <div class="feat"><div class="feat-icon">📧</div><div class="feat-title">Booking enquiry form</div><p class="feat-desc">New reservations go straight to your inbox. No lead ever missed.</p></div>
+      <div class="feat"><div class="feat-icon">📊</div><div class="feat-title">Visitor tracking</div><p class="feat-desc">See exactly how many people find your business online every day.</p></div>
+      <div class="feat"><div class="feat-icon">🤖</div><div class="feat-title">AI search ready</div><p class="feat-desc">Visible on ChatGPT, Google AI, and Perplexity — the new way people find spas.</p></div>
+      <div class="feat"><div class="feat-icon">⚡</div><div class="feat-title">Loads in under 2 seconds</div><p class="feat-desc">Fast on any connection. Slow websites lose clients before the page opens.</p></div>
+      <div class="feat"><div class="feat-icon">🌐</div><div class="feat-title">Multi-language ready</div><p class="feat-desc">Arabic, Russian, French available — ideal for Dubai Marina's international guests.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="pricing">
+  <h2>Your investment</h2>
+  <p class="pricing-sub">One-time payment. No monthly fees. No surprises.</p>
+  <table>
+    <thead><tr><th>Plan</th><th>Price</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td><span class="plan-name">Starter</span></td><td><span class="plan-price">AED 2,000</span></td><td class="plan-desc">Single-page website, WhatsApp button, Google-ready, mobile-friendly</td></tr>
+      <tr><td><span class="plan-name">Launch</span></td><td><span class="plan-price">AED 3,000</span></td><td class="plan-desc">Full website, enquiry form, WhatsApp, Google-ready, visitor tracking</td></tr>
+      <tr class="rec"><td><span class="plan-name">Growth <span class="badge">Recommended</span></span></td><td><span class="plan-price">AED 4,500</span></td><td class="plan-desc">Everything in Launch + 3 months of updates and support + AI search optimization</td></tr>
+      <tr><td><span class="plan-name">Premium</span></td><td><span class="plan-price">AED 8,000+</span></td><td class="plan-desc">Everything in Growth + Google advertising setup + monthly performance reports</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="cta">
+  <div class="cta-inner">
+    <h2>Ready to be found?</h2>
+    <p>Your website is already built. Let's put TouchLife on the map — and start turning those late-night searches into bookings.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/971585324519?text=Hi%2C%20I%20saw%20the%20Web%20Vanguard%20proposal%20for%20TouchLife%20Spa%20and%20I%27m%20interested" target="_blank" class="btn-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a href="https://lumiere-wellness.vercel.app" target="_blank" class="btn-demo">View Live Demo →</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Web Vanguard · Dubai · hello@webvanguard.co</footer>
+<script data-goatcounter="https://webvanguard.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
